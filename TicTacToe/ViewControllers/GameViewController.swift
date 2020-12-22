@@ -81,4 +81,3 @@ extension GameViewController: GameBaseDelegate {
     presenter?.initGame()
   }
 }
-
