@@ -243,7 +243,7 @@
 					396F49091E66DC4D00C65225 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 2W4XUH8LUQ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -577,11 +577,13 @@
 			baseConfigurationReference = 8FA59AB66B5E2DFFA9BDD022 /* Pods-TicTacToe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2W4XUH8LUQ;
 				INFOPLIST_FILE = TicTacToe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.min.TheTestTictactoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TicTacToe_Dev;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -591,11 +593,13 @@
 			baseConfigurationReference = 97791215D512314D70C7372B /* Pods-TicTacToe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2W4XUH8LUQ;
 				INFOPLIST_FILE = TicTacToe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.min.TheTestTictactoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TicTacToe_Dev;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

@@ -52,6 +52,10 @@ Carthage/*
 Dependencies/
 .accio/
 
+# fastlane/.env.secret
+.env
+.env.secret
+
 # fastlane
 fastlane/report.xml
 fastlane/Preview.html
