@@ -1,0 +1,20 @@
+name: Swift
+
+on:
+  push:
+    branches: [ Developer ]
+  pull_request:
+    branches: [ Developer ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Bundle Install
+        run: bundle install
+      - name: run Unit tests lane
+        run: bundle exec fastlane dev_tests
