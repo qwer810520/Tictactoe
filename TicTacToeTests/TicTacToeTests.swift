@@ -177,6 +177,6 @@ class TicTacToeTests: XCTestCase {
     let result = presenter?.checkWinnerConditions()
 
     XCTAssertTrue(result?.isHaveWinner ?? false)
-    XCTAssertEqual(result?.winner, Players.player2)
+    XCTAssertEqual(result?.winner, Players.player1)
   }
 }
