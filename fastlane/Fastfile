@@ -34,6 +34,7 @@ platform :ios do
         clean: true,
         slack_url: ENV['SLACK_URL']
       )
+      puts "slackURL: #{ENV['SLACK_URL']}"
     # rescue => exception
     #   errorLog(exception)
     # end
