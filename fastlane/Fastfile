@@ -27,14 +27,13 @@ platform :ios do
     # begin
       install_pods()
       scan(
-        workspace: 'TicTacToe.xcworkspace',
-        scheme: 'TicTacToeCI',
+        workspace: ENV["WORK_SPACE"],
+        scheme: ENV["CI_SCHEME"],
         devices: ["iPhone 11"],
         code_coverage: true, 
         clean: true,
         slack_url: ENV['SLACK_URL']
       )
-      puts "slackURL: #{ENV['SLACK_URL']}"
     # rescue => exception
     #   errorLog(exception)
     # end
@@ -45,61 +44,6 @@ platform :ios do
       clean: true,
       podfile: "Podfile",
       try_repo_update_on_error: true
-    )
-  end
-
-  def errorLog(exception)
-    slack(
-      message: 'Error occured!',
-      success: false,
-      slack_url: ENV['SLACK_URL'],
-      default_payloads: [:git_branch, :last_git_commit_message, :git_author, :last_git_commit_hash],
-      attachment_properties: {
-        fields: [
-          {
-            title: 'Error log',
-            value: exception,
-            short: true
-          },
-          {
-            title: 'Build number',
-            value: ENV["BUILD_NUMBER"]
-          }
-        ]
-      }
-    )
-
-    telegram(
-      token: ENV['TELEGRAM_TOKEN'],
-      chat_id: ENV['TELEGRAM_CHAT_ID'],
-      text: "Error occured!, error log: #{exception.to_s}"
-    )
-  end
-
-  def successLog(message)
-    slack(
-      message: message,
-      success: true,
-      slack_url: ENV['SLACK_URL'],
-      default_payloads: [:git_branch, :last_git_commit_message, :git_author, :last_git_commit_hash]
-    )
-
-    telegram(
-      token: ENV['TELEGRAM_TOKEN'],
-      chat_id: ENV['TELEGRAM_CHAT_ID'],
-      text: "#{message}"
-    )
-  end
-
-  def swiftLintLane
-    swiftLint(
-      mode: :lint,
-      executable: "Pods/SwiftLint/swiftlint",       
-      output_file: "swiftlint.result.json", 
-      config_file: ".swiftlint.yml",     
-      raise_if_swiftlint_error: true,      
-      ignore_exit_status: true,
-      strict: true
     )
   end
 end

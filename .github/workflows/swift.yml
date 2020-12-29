@@ -10,6 +10,9 @@ jobs:
   test:
     name: Test
     runs-on: macos-latest
+    env:
+      BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
+      APPLE_ID: ${{ secrets.APPLE_ID }}
 
     steps:
       - name: Checkout
@@ -19,4 +22,6 @@ jobs:
       - name: run Unit tests lane
         env: 
           SLACK_URL: ${{ secrets.SLACK_URL }}
+          WORK_SPACE: ${{ secrets.WORK_SPACE }}
+          CI_SCHEME: ${{ secrets.CI_SCHEME }}
         run: bundle exec fastlane dev_tests --verbose
