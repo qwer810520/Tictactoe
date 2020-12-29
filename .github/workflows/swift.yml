@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Unit Tests
     runs-on: macos-latest
     env:
       BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
@@ -25,3 +25,21 @@ jobs:
           WORK_SPACE: ${{ secrets.WORK_SPACE }}
           CI_SCHEME: ${{ secrets.CI_SCHEME }}
         run: bundle exec fastlane dev_tests --verbose
+      - name: Send Unit Test Result To Slack
+        uses: 8398a7/action-slack@v3
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_URL }} 
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          custom_payload: |
+            {
+              username: 'action-slack',
+              icon_emoji: ':octocat:',
+              attachments: [{
+                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+                text: `${process.env.AS_WORKFLOW}\n${process.env.AS_JOB} (${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.AS_AUTHOR} succeeded in ${process.env.AS_TOOK}`,
+              }]
+            } 
+
