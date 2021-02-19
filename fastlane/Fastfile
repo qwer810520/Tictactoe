@@ -24,19 +24,15 @@ platform :ios do
 
   desc "Runs all tests"
   lane :dev_tests do 
-    # begin
-      install_pods()
-      scan(
-        workspace: ENV["WORK_SPACE"],
-        scheme: ENV["CI_SCHEME"],
-        devices: ["iPhone 11"],
-        code_coverage: true, 
-        clean: true,
-        slack_url: ENV['SLACK_URL']
-      )
-    # rescue => exception
-    #   errorLog(exception)
-    # end
+    install_pods()
+    scan(
+      workspace: ENV["WORK_SPACE"],
+      scheme: ENV["CI_SCHEME"],
+      devices: ["iPhone 11"],
+      code_coverage: true, 
+      clean: true,
+      slack_url: ENV["SLACK_URL"]
+    )
   end
 
   def install_pods
