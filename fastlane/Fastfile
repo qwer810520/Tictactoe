@@ -30,8 +30,7 @@ platform :ios do
       scheme: ENV["CI_SCHEME"],
       devices: ["iPhone 11"],
       code_coverage: true, 
-      clean: true,
-      slack_url: ENV["SLACK_URL"]
+      clean: true
     )
   end
 
