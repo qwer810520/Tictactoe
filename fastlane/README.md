@@ -21,9 +21,14 @@ or alternatively using `brew install fastlane`
 fastlane ios dev_tests
 ```
 Runs all tests
-### ios test_slack
+### ios release
 ```
-fastlane ios test_slack
+fastlane ios release
+```
+
+### ios uploadMeta
+```
+fastlane ios uploadMeta
 ```
 
 

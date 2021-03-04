@@ -35,6 +35,42 @@ platform :ios do
     )
   end
 
+  lane :release do
+    install_pods()
+    increment_build_number()
+    
+    match(
+      type: "appstore", 
+      readonly: true
+    )
+
+    gym()
+
+    deliver(
+      skip_screenshots: true,
+      skip_metadata: true
+    )
+
+    clean_build_artifacts()
+
+    sendSlackMessage("Upload IPA success!!!")
+  end
+
+  lane :uploadMeta do
+    deliver(
+      skip_screenshots: true,
+      skip_metadata: false
+    )
+    sendSlackMessage("Upload metadata success!!!")
+  end
+
+  def sendSlackMessage(message)
+    slack(
+      message: message,
+      slack_url: ENV["SLACK_URL"]
+    )
+  end
+
   def install_pods
     cocoapods(
       clean: true,
