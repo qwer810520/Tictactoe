@@ -24,7 +24,7 @@ jobs:
           SLACK_URL: ${{ secrets.SLACK_URL }}
           WORK_SPACE: ${{ secrets.WORK_SPACE }}
           CI_SCHEME: ${{ secrets.CI_SCHEME }}
-        run: bundle exec fastlane dev_tests --verbose
+        run: bundle exec fastlane dev_tests
       - name: Send Unit Test Result To Slack
         uses: 8398a7/action-slack@v3
         if: always()
