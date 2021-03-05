@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/crazymanish/fastlane-plugin-slack_bot.git
-  revision: 72184254e52e65db8d6aea8db95c2571de25d792
+  revision: 1a520145528eb7af812b8a884fccefc972b6e511
   specs:
-    fastlane-plugin-slack_bot (0.4.0)
+    fastlane-plugin-slack_bot (0.4.1)
 
 GIT
   remote: https://github.com/sergpetrov/fastlane-plugin-telegram.git
